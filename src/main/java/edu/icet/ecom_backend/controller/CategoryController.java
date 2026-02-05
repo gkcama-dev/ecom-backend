@@ -5,6 +5,8 @@ import edu.icet.ecom_backend.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/category")
 @RequiredArgsConstructor
@@ -16,5 +18,10 @@ public class CategoryController {
     @PostMapping("/add")
     public Category addCategory(@RequestBody Category category) {
         return categoryService.createCategory(category);
+    }
+
+    @GetMapping("/all")
+    public List<Category> getAllCategories() {
+        return categoryService.getAllCategories();
     }
 }
