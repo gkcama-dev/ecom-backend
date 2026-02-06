@@ -4,6 +4,7 @@ import edu.icet.ecom_backend.model.Product;
 import edu.icet.ecom_backend.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping("/add/{categoryId}")
-    public Product addProduct(@RequestBody Product product, @PathVariable Long categoryId) {
+    public Product addProduct(@Valid @RequestBody Product product, @PathVariable Long categoryId) {
         return productService.createProduct(product, categoryId);
     }
 
